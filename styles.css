@@ -23,11 +23,15 @@
   padding: 0;
 }
 
+html {
+  background: transparent;
+}
+
 body {
   min-height: 100vh;
   font-family: var(--sans);
   color: var(--ink);
-  background: #7fc7ff;
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -569,5 +573,123 @@ body {
 
   .modal-card {
     max-height: 92vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .glass-bar {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin: 10px 12px;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .brand-title {
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bar-actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .glass-button {
+    height: 34px;
+    min-width: auto;
+    padding: 0 12px;
+    font-size: 0.85rem;
+  }
+
+  .desktop {
+    padding: 18px 14px 60px;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 16px 12px;
+  }
+
+  .icon-card {
+    padding: 10px 8px 12px;
+  }
+
+  .icon-label {
+    font-size: 0.74rem;
+    line-height: 1.25;
+  }
+
+  .icon-meta {
+    font-size: 0.7rem;
+  }
+
+  .modal {
+    padding: 12px;
+  }
+
+  .modal-card.modal-article {
+    width: 96vw;
+    max-height: 88vh;
+    border-radius: 26px;
+    padding-top: 48px;
+  }
+
+  .modal-close {
+    width: 34px;
+    height: 34px;
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    right: calc(10px + env(safe-area-inset-right, 0px));
+  }
+
+  .article-card {
+    max-height: calc(88vh - 48px);
+    padding: 18px 16px 26px;
+  }
+
+  .article-header {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .article-header h1 {
+    font-size: clamp(1.5rem, 5.5vw, 2rem);
+    line-height: 1.18;
+  }
+
+  .article-dek {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .article-meta {
+    font-size: 0.78rem;
+  }
+
+  .article-intro {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .article-section {
+    margin-top: 22px;
+    gap: 12px;
+  }
+
+  .article-section h2 {
+    font-size: clamp(1.1rem, 4.6vw, 1.5rem);
+  }
+
+  .article-section p {
+    font-size: 0.96rem;
+    line-height: 1.7;
   }
 }
