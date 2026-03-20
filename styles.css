@@ -358,6 +358,39 @@ body {
   backdrop-filter: blur(28px) saturate(1.25);
 }
 
+.modal.modal-poster {
+  padding: 0;
+  overflow: hidden;
+}
+
+.modal.modal-poster .modal-backdrop {
+  background: rgba(8, 10, 14, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.modal.modal-poster .modal-card.modal-article {
+  width: min(1400px, 96vw);
+  height: min(96vh, 1100px);
+  max-height: 96vh;
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  padding: clamp(12px, 2.5vw, 24px);
+  box-shadow: 0 36px 80px rgba(8, 14, 28, 0.35);
+  background: radial-gradient(120% 140% at 8% 12%, rgba(255, 255, 255, 0.95), rgba(235, 244, 255, 0.7) 50%, rgba(210, 226, 255, 0.55) 100%);
+  backdrop-filter: blur(28px) saturate(1.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.modal-poster .modal-close {
+  top: 16px;
+  right: 16px;
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
 .modal-close {
   justify-self: end;
   border: 1px solid rgba(12, 18, 32, 0.15);
@@ -382,9 +415,9 @@ body {
 
 .modal-close:hover,
 .modal-close:focus-visible {
-  background: rgba(12, 18, 32, 0.92);
+  background: #000000;
   color: #ffffff;
-  border-color: rgba(12, 18, 32, 0.92);
+  border-color: #000000;
   box-shadow: 0 0 0 4px rgba(178, 140, 255, 0.2);
 }
 
@@ -439,6 +472,46 @@ body {
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
+}
+
+.poster-card {
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.poster-card img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.deck-card {
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: stretch;
+  justify-content: center;
+  padding: clamp(12px, 2.5vw, 24px);
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.deck-card embed {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .article-header {
@@ -555,6 +628,21 @@ body {
   background-clip: padding-box;
 }
 
+.poster-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.poster-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.poster-card::-webkit-scrollbar-thumb {
+  background: rgba(12, 18, 32, 0.18);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
 @media (max-width: 720px) {
   .glass-bar {
     flex-direction: column;
@@ -653,6 +741,18 @@ body {
   .article-card {
     max-height: calc(88vh - 48px);
     padding: 18px 16px 26px;
+  }
+
+  .poster-card {
+    height: 100%;
+  }
+
+  .poster-frame {
+    padding: 8px;
+  }
+
+  .poster-frame img {
+    height: 58vh;
   }
 
   .article-header {
