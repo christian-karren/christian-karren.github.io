@@ -298,6 +298,8 @@ body {
   font-weight: 600;
   text-align: center;
   text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+  line-height: 1.25;
+  min-height: 2.5em;
 }
 
 .icon-meta {
