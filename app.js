@@ -1,12 +1,12 @@
 const articles = [
   {
-    title: "Open Source Speech-to-Text Tool",
+    title: "Open Source Speech‑to‑Text Tool",
     date: "May 20th, 2026",
     company: "",
     concept: "",
     url: "https://github.com/christian-karren/splashaudio",
     target: "_blank",
-    icon: "assets/docicon.png",
+    icon: "assets/terminal.png",
     type: "link",
   },
   {
