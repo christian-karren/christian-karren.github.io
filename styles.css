@@ -24,7 +24,12 @@
 }
 
 html {
-  background: transparent;
+  background-color: #7aa6e0;
+  background-image: url("assets/windowsxp.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {
@@ -663,13 +668,23 @@ body {
 
 @media (max-width: 720px) {
   .glass-bar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .bar-actions {
+    display: none;
+  }
+
+  .brand {
+    align-items: center;
     width: 100%;
-    justify-content: flex-start;
+    text-align: center;
+  }
+
+  .brand-title {
+    text-align: center;
   }
 
   .menu-panel {
