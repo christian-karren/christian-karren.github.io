@@ -25,11 +25,6 @@
 
 html {
   background-color: #7aa6e0;
-  background-image: url("assets/windowsxp.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 body {
@@ -42,7 +37,10 @@ body {
 
 .backdrop {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100lvh;
   background-image: url("assets/windowsxp.webp");
   background-size: cover;
   background-position: center;
