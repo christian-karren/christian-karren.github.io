@@ -1,5 +1,15 @@
 const articles = [
   {
+    title: "Open Source Speech-to-Text Tool",
+    date: "May 20th, 2026",
+    company: "",
+    concept: "",
+    url: "https://github.com/christian-karren/splashaudio",
+    target: "_blank",
+    icon: "assets/docicon.png",
+    type: "link",
+  },
+  {
     title: "The Rising Strategic Value of Creative in Digital Advertising",
     date: "December 4th, 2025",
     company: "",
@@ -112,15 +122,21 @@ function closeModal() {
 grid.addEventListener("click", (event) => {
   const card = event.target.closest("[data-article]");
   if (!card) return;
-  event.preventDefault();
   if (card.dataset.justDragged === "true") {
+    event.preventDefault();
     delete card.dataset.justDragged;
     return;
   }
   const article = articles.find((item) => item.title === card.dataset.article);
-  if (article) {
-    openModal(article);
+  if (!article) {
+    event.preventDefault();
+    return;
   }
+  if (article.url && article.url !== "#") {
+    return;
+  }
+  event.preventDefault();
+  openModal(article);
 });
 
 function enableCardDragging() {
