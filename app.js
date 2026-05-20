@@ -142,15 +142,24 @@ function enableCardDragging() {
   grid.style.display = "block";
   grid.style.position = "relative";
 
+  let maxWidth = 0;
+  let maxHeight = 0;
+  cards.forEach((card) => {
+    const n = natural.get(card);
+    if (n.width > maxWidth) maxWidth = n.width;
+    if (n.height > maxHeight) maxHeight = n.height;
+  });
+
   let maxBottom = 0;
   cards.forEach((card) => {
     const n = natural.get(card);
     card.style.position = "absolute";
-    card.style.width = `${n.width}px`;
+    card.style.width = `${maxWidth}px`;
+    card.style.height = `${maxHeight}px`;
     card.style.left = `${n.left}px`;
     card.style.top = `${n.top}px`;
     card.draggable = false;
-    const bottom = n.top + n.height;
+    const bottom = n.top + maxHeight;
     if (bottom > maxBottom) maxBottom = bottom;
   });
   grid.style.minHeight = `${maxBottom + 40}px`;
