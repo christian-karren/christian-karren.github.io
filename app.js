@@ -113,11 +113,98 @@ grid.addEventListener("click", (event) => {
   const card = event.target.closest("[data-article]");
   if (!card) return;
   event.preventDefault();
+  if (card.dataset.justDragged === "true") {
+    delete card.dataset.justDragged;
+    return;
+  }
   const article = articles.find((item) => item.title === card.dataset.article);
   if (article) {
     openModal(article);
   }
 });
+
+function enableCardDragging() {
+  const cards = Array.from(grid.querySelectorAll(".icon-card"));
+  if (cards.length === 0) return;
+
+  const gridRect = grid.getBoundingClientRect();
+  const natural = new Map();
+  cards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    natural.set(card, {
+      left: rect.left - gridRect.left,
+      top: rect.top - gridRect.top,
+      width: rect.width,
+      height: rect.height,
+    });
+  });
+
+  grid.style.display = "block";
+  grid.style.position = "relative";
+
+  let maxBottom = 0;
+  cards.forEach((card) => {
+    const n = natural.get(card);
+    card.style.position = "absolute";
+    card.style.width = `${n.width}px`;
+    card.style.left = `${n.left}px`;
+    card.style.top = `${n.top}px`;
+    card.draggable = false;
+    const bottom = n.top + n.height;
+    if (bottom > maxBottom) maxBottom = bottom;
+  });
+  grid.style.minHeight = `${maxBottom + 40}px`;
+
+  const DRAG_THRESHOLD = 5;
+  let dragState = null;
+
+  grid.addEventListener("pointerdown", (event) => {
+    if (event.button !== undefined && event.button !== 0) return;
+    const card = event.target.closest(".icon-card");
+    if (!card) return;
+    dragState = {
+      card,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      origLeft: parseFloat(card.style.left) || 0,
+      origTop: parseFloat(card.style.top) || 0,
+      moved: false,
+    };
+    card.setPointerCapture(event.pointerId);
+  });
+
+  grid.addEventListener("pointermove", (event) => {
+    if (!dragState || event.pointerId !== dragState.pointerId) return;
+    const dx = event.clientX - dragState.startX;
+    const dy = event.clientY - dragState.startY;
+    if (!dragState.moved && Math.hypot(dx, dy) < DRAG_THRESHOLD) return;
+    dragState.moved = true;
+    dragState.card.classList.add("dragging");
+    dragState.card.style.left = `${dragState.origLeft + dx}px`;
+    dragState.card.style.top = `${dragState.origTop + dy}px`;
+  });
+
+  function endDrag(event) {
+    if (!dragState || event.pointerId !== dragState.pointerId) return;
+    const { card, moved } = dragState;
+    if (card.hasPointerCapture(event.pointerId)) {
+      card.releasePointerCapture(event.pointerId);
+    }
+    card.classList.remove("dragging");
+    if (moved) {
+      const top = parseFloat(card.style.top);
+      const newBottom = top + card.offsetHeight + 40;
+      const currentMin = parseFloat(grid.style.minHeight) || 0;
+      if (newBottom > currentMin) grid.style.minHeight = `${newBottom}px`;
+      card.dataset.justDragged = "true";
+    }
+    dragState = null;
+  }
+
+  grid.addEventListener("pointerup", endDrag);
+  grid.addEventListener("pointercancel", endDrag);
+}
 
 modalCloseButtons.forEach((button) => {
   button.addEventListener("click", closeModal);
@@ -130,3 +217,8 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderArticles();
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(enableCardDragging);
+} else {
+  enableCardDragging();
+}
