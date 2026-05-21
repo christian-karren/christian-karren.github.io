@@ -26,27 +26,15 @@
 html {
   min-height: 100vh;
   min-height: 100lvh;
-  background-color: #7aa6e0;
-  background-image: url("assets/windowsxp.webp");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-body {
-  background-color: #7aa6e0;
-  background-image: url("assets/windowsxp.webp");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: #5b8ac8;
 }
 
 body {
   min-height: 100vh;
+  min-height: 100lvh;
   font-family: var(--sans);
   color: var(--ink);
-  background: transparent;
+  background-color: #5b8ac8;
   overflow-x: hidden;
 }
 
@@ -55,10 +43,13 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
+  height: 100vh;
   height: 100lvh;
+  background-color: #5b8ac8;
   background-image: url("assets/windowsxp.webp");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   filter: saturate(1.1) contrast(1.05);
   z-index: -2;
 }
