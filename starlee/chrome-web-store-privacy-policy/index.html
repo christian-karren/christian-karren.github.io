@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Privacy policy for the Starlee Capture Chrome extension." />
+    <title>Starlee Capture Chrome Extension Privacy Policy</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body class="privacy-policy-page">
+    <main class="privacy-policy" role="main">
+      <article>
+        <header class="privacy-policy-header">
+          <h1>Starlee Capture Chrome Extension Privacy Policy</h1>
+          <p>Last updated: 2026-06-30</p>
+        </header>
+
+        <p>Starlee Capture is a Chrome-only browser extension for saving the article or YouTube transcript the user chooses into the local Starlee app running on that user's Mac.</p>
+
+        <section>
+          <h2>Data The Extension Handles</h2>
+          <p>When the user saves a page, Starlee Capture may process:</p>
+          <ul>
+            <li>article text from the current rendered page;</li>
+            <li>selected text from the current page;</li>
+            <li>page metadata such as title, URL, canonical URL, author, publisher, and access classification;</li>
+            <li>YouTube video metadata visible on the page;</li>
+            <li>YouTube transcript segments visible or available to the rendered page;</li>
+            <li>local connection settings needed to reach the user's Starlee service.</li>
+          </ul>
+          <p>Starlee Capture does not collect or transmit full browsing history. It acts only when the user chooses to save the current page through the Chrome toolbar, in-page Starlee button, or Starlee macOS menu-bar app.</p>
+        </section>
+
+        <section>
+          <h2>How Data Is Used</h2>
+          <p>Captured article text, selected text, metadata, and YouTube transcript data are sent only to the Starlee service running on the user's own computer at <code>http://127.0.0.1</code>. The local Starlee app stores captures in <code>~/Starlee</code> and builds a local search index so the user can search and retrieve their own saved knowledge.</p>
+          <p>The extension does not use captured content for advertising, analytics, user profiling, credit decisions, or resale.</p>
+        </section>
+
+        <section>
+          <h2>Sharing And Transmission</h2>
+          <p>Starlee Capture does not sell, share, upload, or transmit article bodies, transcripts, browsing history, vault data, or capture tokens to Starlee servers. The extension communicates with the loopback address <code>127.0.0.1</code>, which is the user's own computer.</p>
+          <p>Starlee Capture does not send captured article bodies, selected text, YouTube transcripts, vault data, or capture tokens to third parties.</p>
+        </section>
+
+        <section>
+          <h2>Local Storage And Security</h2>
+          <p>The extension stores only the local connection information it needs to talk to the user's Starlee service, including the local port, local bearer token, and redacted connection state. The bearer token is generated locally by Starlee and is used only to authenticate requests to the loopback service on the same Mac.</p>
+          <p>The Chrome Web Store package does not include <code>starlee-config.json</code>, capture tokens, local vault data, local config files, source maps, model files, <code>node_modules</code>, or unexpected remote URLs.</p>
+        </section>
+
+        <section>
+          <h2>Retention And Deletion</h2>
+          <p>Captured content is stored locally in <code>~/Starlee</code> by the Starlee app. The user controls that local folder. To delete saved captures, delete the relevant files from <code>~/Starlee</code> or remove the Starlee local data folder. To remove extension connection state, uninstall the Chrome extension or clear the extension's local Chrome storage.</p>
+        </section>
+
+        <section>
+          <h2>Human Access</h2>
+          <p>Starlee Capture does not provide Starlee developers with access to captured article bodies, selected text, YouTube transcripts, browsing history, vault data, or capture tokens. This data stays on the user's Mac unless the user separately chooses to share files from their local Starlee folder.</p>
+        </section>
+
+        <section>
+          <h2>Limited Use Statement</h2>
+          <p>The use of information received from Google APIs will adhere to the Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <p>For privacy or support questions, use the support contact listed on the Starlee Chrome Web Store listing.</p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
